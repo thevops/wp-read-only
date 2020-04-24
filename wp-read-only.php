@@ -10,7 +10,8 @@ Author URI: https://luczak.pro
 */
 
 
-add_action( 'init', add_filter( 'query', 'my_readonly_filter' ));
+//add_filter( 'query', 'my_readonly_filter' );
+add_action( 'pre_get_posts', 'my_readonly_filter');
 
 /**
  * Credits: https://wordpress.stackexchange.com/a/243441
