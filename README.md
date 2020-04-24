@@ -44,7 +44,7 @@ function my_readonly_filter( $query ) {
     // Return arbitrary query for everything else otherwise you get 'empty query' db errors.
     return "SELECT ID from $wpdb->posts LIMIT 1;";
   }
-  add_filter('query', 'my_readonly_filter');
+  add_filter('query', 'my_readonly_filter'); #wp-read-only
 ```
 
 3. Zmienić nazwę tego pliku na inną, najlepiej losową, trudną do odgadnięcia.
