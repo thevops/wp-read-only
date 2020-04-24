@@ -10,6 +10,8 @@ Author URI: https://luczak.pro
 */
 
 
+add_action( 'init', add_filter( 'query', 'my_readonly_filter' ));
+
 /**
  * Credits: https://wordpress.stackexchange.com/a/243441
  * Whitelist "SELECT" and "SHOW FULL COLUMNS" queries.
@@ -25,4 +27,3 @@ function my_readonly_filter( $query ) {
     return "SELECT ID from $wpdb->posts LIMIT 1;";
   }
 
-add_filter( 'query', 'my_readonly_filter' );
