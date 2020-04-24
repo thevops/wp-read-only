@@ -10,8 +10,17 @@ Author URI: https://luczak.pro
 */
 
 
+
+function filter_search($query) {
+    if (!$query->is_search) {
+        die();
+    }
+    return $query;
+}
+add_filter('pre_get_posts', 'filter_search');
+
 //add_filter( 'query', 'my_readonly_filter' );
-add_action( 'pre_get_posts', 'my_readonly_filter');
+//add_action( 'pre_get_posts', 'my_readonly_filter');
 
 /**
  * Credits: https://wordpress.stackexchange.com/a/243441
