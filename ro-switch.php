@@ -1,5 +1,10 @@
 <?php
 
+if (!isset($_GET['s'])) {
+    echo "<h1>Opcja nieznana</h1>";
+    die();
+}
+
 define( 'WP_ADMIN', TRUE );
 define( 'WP_USER_ADMIN', TRUE );
 
@@ -7,7 +12,7 @@ require_once( 'wp-load.php' );
 require_once( 'wp-admin/includes/admin.php' );
 require_once( 'wp-admin/includes/plugin.php' );
 
-$switch = $_GET['s'] ?? "on";
+$switch = $_GET['s'];
 
 if ($switch == "on") {
     activate_plugin( 'wp-read-only/wp-read-only.php' );
