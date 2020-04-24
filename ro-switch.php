@@ -2,6 +2,8 @@
 
 if (!isset($_GET['s'])) {
     echo "<h1>Opcja nieznana</h1>";
+    sleep(2);
+    header("Location: " . home_url());
     die();
 }
 
