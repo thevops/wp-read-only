@@ -5,22 +5,17 @@ if (!isset($_GET['s'])) {
     die();
 }
 
-define( 'WP_ADMIN', TRUE );
-define( 'WP_USER_ADMIN', TRUE );
-
-require_once( 'wp-load.php' );
-require_once( 'wp-admin/includes/admin.php' );
-require_once( 'wp-admin/includes/plugin.php' );
+$functions_file="wp-content/themes/enigma-parallax/functions.php";
 
 $switch = $_GET['s'];
 
 if ($switch == "on") {
-    activate_plugin( 'wp-read-only/wp-read-only.php' );
+    exec("sed -i \"s|#add_filter('query', 'my_readonly_filter');|add_filter('query', 'my_readonly_filter');|g\" $functions_file" );
     exec('find -type f -exec chmod 0444 {} \;');
     exec('find -type d -exec chmod 0555 {} \;');    
     echo "<h1>Tryb read-only włączony</h1>";
 } elseif ($switch == "off") {
-    deactivate_plugins( 'wp-read-only/wp-read-only.php' );
+    exec("sed -i \"s|add_filter('query', 'my_readonly_filter');|#add_filter('query', 'my_readonly_filter');|g\" $functions_file" );
     exec('find -type f -exec chmod 0644 {} \;');
     exec('find -type d -exec chmod 0755 {} \;');
     echo "<h1>Tryb read-only wyłączony</h1>";
