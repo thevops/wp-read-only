@@ -1,7 +1,7 @@
 # wp-read-only
 Make your WordPress read only
 
-Celem wtyczki jest zabezpieczenie WordPressa.
+Celem wtyczki jest zabezpieczenie WordPressa zabranie praw zapisu plikom i katalogom oraz wyeliminowanie zapytań do bazy innych niż SELECT.
 
 
 ## Funkcje
